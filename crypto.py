@@ -1,113 +1,37 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-cadena = "¿A dónde voy?" 
+abc = 'abcdefghijklmnopqrstuvwxyz'
 
-desplazamiento = 3 
+def cifrar(cadena, clave):
 
- 
+	text_cifrado = ''
 
-def encriptar (cadena, desplazamiento): 
+	for letra in cadena:
+		suma = abc.find(letra) + clave
+		modulo = int(suma) % len(abc)
+		text_cifrado = text_cifrado + str(abc[modulo])
 
-    letras_mayusculas = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", 
+	return text_cifrado
 
-                         "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", 
+def decifrar(cadena, clave):
 
-                         "U", "V", "W", "X", "Y", "Z"] 
+	text_cifrado = ''
 
-    letras_minusculas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
+	for letra in cadena:
+		suma = abc.find(letra) - clave
+		modulo = int(suma) % len(abc)
+		text_cifrado = text_cifrado + str(abc[modulo])
 
-                         "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
+	return text_cifrado
 
-                         "u", "v", "w", "x", "y", "z"] 
+def main():
+	c = str(raw_input('cadena a cifrar: ')).lower()
+	n = int(raw_input('clave numerica: '))
+	print cifrar(c,n)
+	cc = str(raw_input('cadena a decifrar: ')).lower()
+	cn = int(raw_input('clave numerica: '))
+	print decifrar(cc,cn)	
 
-    letras_mayusculas_desplazadas = letras_mayusculas[desplazamiento:] + \ 
-
-                                    letras_mayusculas[:desplazamiento] 
-
-    letras_minusculas_desplazadas = letras_minusculas[desplazamiento:] + \ 
-
-                                    letras_minusculas[:desplazamiento] 
-
-    lista_caracteres = [] 
-
- 
-
-    for caracter in cadena: 
-
-        if caracter in letras_mayusculas: 
-
-            lista_caracteres.append(letras_mayusculas_desplazadas \ 
-
-                                    [letras_mayusculas.index(caracter)]) 
-
-        elif caracter in letras_minusculas: 
-
-            lista_caracteres.append(letras_minusculas_desplazadas \ 
-
-                                    [letras_minusculas.index(caracter)]) 
-
-        else: 
-
-            lista_caracteres.append(caracter) 
-
- 
-
-    nueva_cadena = "".join(lista_caracteres) 
-
- 
-
-    return nueva_cadena 
-
- 
-
-def desencriptar (cadena, desplazamiento): 
-
-    letras_mayusculas = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", 
-
-                         "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", 
-
-                         "U", "V", "W", "X", "Y", "Z"] 
-
-    letras_minusculas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
-
-                         "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
-
-                         "u", "v", "w", "x", "y", "z"] 
-
-    letras_mayusculas_desplazadas = letras_mayusculas[-desplazamiento:] + \ 
-
-                                    letras_mayusculas[:-desplazamiento] 
-
-    letras_minusculas_desplazadas = letras_minusculas[-desplazamiento:] + \ 
-
-                                    letras_minusculas[:-desplazamiento] 
-
-    lista_caracteres = [] 
-
- 
-
-    for caracter in cadena: 
-
-        if caracter in letras_mayusculas: 
-
-            lista_caracteres.append(letras_mayusculas_desplazadas \ 
-
-                                    [letras_mayusculas.index(caracter)]) 
-
-        elif caracter in letras_minusculas: 
-
-            lista_caracteres.append(letras_minusculas_desplazadas \ 
-
-                                    [letras_minusculas.index(caracter)]) 
-
-        else: 
-
-            lista_caracteres.append(caracter) 
-
- 
-
-    nueva_cadena = "".join(lista_caracteres) 
-
- 
-
-    return nueva_cadena 
+if __name__ == '__main__':
+	main()
