@@ -26,7 +26,7 @@ def decifrar(cadena, clave):
 	return text_cifrado
 
 def main():
-	c = str(raw_input('cadena a cifrar: ')).lower()
+	c = str(raw_input('Ingrese clave a cifrar: ')).lower()
 	n = int(raw_input('clave numerica: '))
 	print cifrar(c,n)
 	cc = str(raw_input('cadena a decifrar: ')).lower()
